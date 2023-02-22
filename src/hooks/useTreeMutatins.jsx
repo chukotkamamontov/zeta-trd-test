@@ -4,14 +4,14 @@ import { createTreeNode, renameTreeNode, deleteTreeNode} from '../services/tree'
 const useTreeMutatins = () => {
     const client = useQueryClient()
 
-    const {mutate: create, isLoading: isLoadingCreate} = useMutation({
+    const createMutation = useMutation({
       mutationFn: createTreeNode,
       onSuccess: () => {
         client.invalidateQueries(['node-all'])
       }
     })
 
-    const {mutate: rename} = useMutation({
+    const renameMutation = useMutation({
       mutationFn: renameTreeNode,
       onSuccess: () => {
         client.invalidateQueries(['node-all'])
@@ -25,7 +25,7 @@ const useTreeMutatins = () => {
       },
     })
 
-    return {create, rename, isLoadingCreate, removeMutation}
+    return {createMutation, renameMutation, removeMutation}
 }
 
 export default useTreeMutatins

@@ -1,7 +1,9 @@
+import { useEffect, useState } from "react"
 import { useQuery } from "@tanstack/react-query"
 import { getRootTreeNode } from "../../services/tree"
 import Spinner from "../../ui/spinner/Spinner"
 import TreeNode from "../treeNode/TreeNode"
+import Modal from "../modal/Modal"
 
 // const root = 'C9232B85-AD10-459C-A44F-70CA30C60E5F'
 // const root1 = 'Root'
@@ -13,8 +15,6 @@ function Tree() {
     queryFn: () => getRootTreeNode('chukotka'),
     queryKey: ['node-all']
   }) 
-
-  console.log(data)
 
   if (isLoading) return <Spinner/>
 
