@@ -1,44 +1,34 @@
-import React, {useEffect, useState} from 'react'
+import React, { useState } from 'react'
 import ReactDOM  from 'react-dom'
 import styles from './Modal.module.css'
 
-const Modal = ({open, onClose, getFormData, type, error, children}) => {
-    
-    
+const Modal = ({open, onClose, getFormData, type, error}) => {
 
     const [text, setText] = useState('')
-    // console.log(text)
-    // console.log(text)
-
-    if (!open) return null
 
     const inputHandler = (ev) => {
         ev.preventDefault()
         setText(ev.target.value);
-        // getFormData(ev.target.value);
     }
-
+    
     const formHandler = (ev) => {
         ev.preventDefault()
         getFormData(text)
         setText('')
         onClose()
     }
- 
+    
+    if (!open) return null
   
     return ReactDOM.createPortal(
         <>
             <div className={styles.overlay} onClick={onClose}></div>
             <div className={styles.modal}>
-                {/* <button>Close</button> */}
+                <h1>{type}</h1>
                 {error && <div>{error}</div>}
-                <div>type: {type}</div>
-                <div>value: {text}</div>
                 <form onSubmit={formHandler}>
-                    {type === 'add' && <input type='text' value={text} onChange={inputHandler} placeholder='enter node name'/>}
-                    {type === 'rename' && <input type='text' value={text} onChange={inputHandler} placeholder='enter new node name'/>}
+                    {!error && <input type='text' value={text} onChange={inputHandler} placeholder={type === 'add' ? 'enter new nome': 'enter new node name'}/>}
                 </form>
-                {children}
             </div>
         </>,
         document.getElementById('portal')

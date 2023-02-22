@@ -5,7 +5,6 @@ export const getRootTreeNode = async (treeName) => {
     return result
 }
 
-// https://test.vmarmysh.com/api.user.tree.node.create?treeName=chukotka&parentNodeId=513&nodeName=foo fighters
 export const createTreeNode = async ({treeName, parentNodeId, nodeName}) => {
     const result = await fetch(`${BASE}node.create?treeName=${treeName}&parentNodeId=${parentNodeId}&nodeName=${nodeName}`, {
         method: 'POST',
@@ -14,7 +13,6 @@ export const createTreeNode = async ({treeName, parentNodeId, nodeName}) => {
 }
 
 export const renameTreeNode = async ({treeName, nodeId, newNodeName}) => {
-    console.log('editTreeNode')
     await fetch(`${BASE}node.rename?treeName=${treeName}&nodeId=${nodeId}&newNodeName=${newNodeName}`, {
         method: 'POST'
     })

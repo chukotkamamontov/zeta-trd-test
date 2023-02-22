@@ -1,16 +1,16 @@
 .treeNode-wrapper {
     border: 1px solid #fff;
-    padding: 20px;
-    margin: 10px;
+    padding: 5px;
+    margin: 5px;
   }
   
   .treeNode {
     height: 50px;
     display: flex;
-    /* flex-direction: row; */
     align-items: center;
   }
-  
+
+
   .treeNode-title {
     margin: 0 10px;
   }
