@@ -27,7 +27,7 @@ const Modal = ({open, onClose, getFormData, type, error}) => {
                 <h1>{type}</h1>
                 {error && <div>{error}</div>}
                 <form onSubmit={formHandler}>
-                    {!error && <input type='text' value={text} onChange={inputHandler} placeholder={type === 'add' ? 'enter new nome': 'enter new node name'}/>}
+                    {!error && <input type='text' value={text} onChange={inputHandler} placeholder={type === 'add' ? 'Node Name': 'name'}/>}
                 </form>
             </div>
         </>,
