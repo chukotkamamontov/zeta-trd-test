@@ -87,7 +87,7 @@ const TreeNode = ({data, activeNode, toggleActiveNode}) => {
 
         <span className={styles['treeNode-title']}>
           {createMutation.isLoading && <Spinner/>}
-          {data.name}
+          {data.name === ROOT_NAME ? 'Root' : data.name}
         </span>
         
         <div className={activeNode === data.id ? styles.toolbar : styles.hide}>
